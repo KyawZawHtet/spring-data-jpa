@@ -20,7 +20,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * Returns the found product entry by using its name as search criteria.
      * If no product entry is found, this method returns null.
      */
-    public Product findByName(String name);
+     Product findByName(String name);
 
     /**
      * Returns an Optional which contains the found product entry by using its id as search criteria.
@@ -74,6 +74,14 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * @return
      */
     List<Product> findByNameLike(String name);
+
+    /**
+     * Returns a products whose price between start price and end price.
+     * @param startPrice
+     * @param endPrice
+     * @return
+     */
+    List<Product> findByPriceBetween(BigDecimal startPrice, BigDecimal endPrice);
 }
 
 

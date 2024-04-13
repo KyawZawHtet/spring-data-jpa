@@ -91,8 +91,17 @@ public class QueryMethodsTest {
     }
 
     @Test
-    void findByNameLikeMethod(){
+    void findByNameLikeMethod() {
         List<Product> products = productRepository.findByNameLike("product 1");
+        products.forEach((product -> {
+            System.out.println("Product ID : " + product.getId());
+            System.out.println("Product Name : " + product.getName());
+        }));
+    }
+
+    @Test
+    void findByPriceBetweenMethod() {
+        List<Product> products = productRepository.findByPriceBetween(new BigDecimal(100), new BigDecimal(300));
         products.forEach((product -> {
             System.out.println("Product ID : " + product.getId());
             System.out.println("Product Name : " + product.getName());
