@@ -10,6 +10,7 @@ import com.kyaw.springdatajpa.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -82,6 +83,15 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      * @return
      */
     List<Product> findByPriceBetween(BigDecimal startPrice, BigDecimal endPrice);
+
+    /**
+     * Returns a products whose dateCreated between start date and end date.
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    List<Product> findByDateCreatedBetween(LocalDateTime startDate, LocalDateTime endDate);
+
 }
 
 

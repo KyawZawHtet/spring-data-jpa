@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -102,6 +103,19 @@ public class QueryMethodsTest {
     @Test
     void findByPriceBetweenMethod() {
         List<Product> products = productRepository.findByPriceBetween(new BigDecimal(100), new BigDecimal(300));
+        products.forEach((product -> {
+            System.out.println("Product ID : " + product.getId());
+            System.out.println("Product Name : " + product.getName());
+        }));
+    }
+
+    @Test
+    void findByDateCreatedBetweenMethod() {
+        // start date
+        LocalDateTime startDate = LocalDateTime.of(2024, 04, 13, 17, 46, 16);
+        // end date
+        LocalDateTime endDate = LocalDateTime.of(2024, 04, 13, 17, 55, 55);
+        List<Product> products = productRepository.findByDateCreatedBetween(startDate, endDate);
         products.forEach((product -> {
             System.out.println("Product ID : " + product.getId());
             System.out.println("Product Name : " + product.getName());
